@@ -33,6 +33,14 @@ CREATE TABLE "PARTS" (
     "product_url" VARCHAR2(500)
 );
 
+CREATE TABLE "PART_SPECS" (
+    "spec_id" NUMBER NOT NULL,
+    "part_id" NUMBER NOT NULL,
+    "spec_key" VARCHAR2(40) NOT NULL,
+    "spec_value" VARCHAR2(200) NOT NULL,
+    "spec_unit" VARCHAR2(20)
+);
+
 CREATE TABLE "ESTIMATES" (
     "estimated_id" NUMBER NOT NULL,
     "user_id" NUMBER NOT NULL,
@@ -53,12 +61,19 @@ CREATE TABLE "ESTIMATE_ITEMS" (
     "quantity" NUMBER DEFAULT 1 NOT NULL
 );
 
-CREATE TABLE "PART_SPECS" (
-    "spec_id" NUMBER NOT NULL,
-    "part_id" NUMBER NOT NULL,
-    "spec_key" VARCHAR2(40) NOT NULL,
-    "spec_value" VARCHAR2(200) NOT NULL,
-    "spec_unit" VARCHAR2(20)
+CREATE TABLE "CARTS" (
+    "cart_id"    NUMBER NOT NULL,
+    "user_id"    NUMBER NOT NULL,
+    "created_at" TIMESTAMP DEFAULT SYSTIMESTAMP NOT NULL,
+    "updated_at" TIMESTAMP DEFAULT SYSTIMESTAMP NOT NULL
+);
+
+CREATE TABLE "CART_ITEMS" (
+    "cart_item_id" NUMBER NOT NULL,
+    "cart_id"      NUMBER NOT NULL,
+    "part_id"      NUMBER NOT NULL,
+    "quantity"    NUMBER DEFAULT 1 NOT NULL,
+    "added_at"    TIMESTAMP DEFAULT SYSTIMESTAMP NOT NULL
 );
 
 CREATE TABLE "PRICE_HISTORY" (

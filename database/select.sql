@@ -55,5 +55,5 @@ FROM "PARTS" p
 JOIN "PRICE_HISTORY" h ON h."part_id" = p."part_id"
 ORDER BY p."part_id", h."recorded_at";
 
-select "spec_key" from "PART_SPECS";
+select "estimated_id" from "ESTIMATES";
 
